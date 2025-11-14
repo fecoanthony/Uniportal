@@ -1,19 +1,34 @@
 import mongoose from "mongoose";
 
-const registrationSchema = new mongoose.Schema(
+const RegistrationSchema = new mongoose.Schema(
   {
-    student_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    course_id: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
-    session_id: { type: mongoose.Schema.Types.ObjectId, ref: "Session" },
+    student_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    course_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+      required: true,
+    },
+    session_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Session",
+      required: true,
+    },
     status: {
       type: String,
-      enum: ["registered", "approved"],
+      enum: ["registered", "approved", "rejected"],
       default: "registered",
     },
   },
   { timestamps: true }
 );
 
-const Registration = mongoose.model("Registration", registrationSchema);
+RegistrationSchema.index(
+  { student_id: 1, course_id: 1, session_id: 1 },
+  { unique: true }
+); // prevents duplicates
 
-export default Registration;
+export default mongoose.model("Registration", RegistrationSchema);

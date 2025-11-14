@@ -4,7 +4,12 @@
   "main": "server.js",
   "scripts": {
     "dev": "server.js",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seed:departments": "node seedDepartments.js",
+    "seed:admin": "node seedAdmin.js",
+    "seed:session": "node seedSessions.js",
+    "seed:result": "node seedResults.js",
+    "seed:fullProject": "node seedFullProject.js"
   },
   "keywords": [],
   "type": "module",
@@ -15,10 +20,12 @@
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "csv-parse": "^6.1.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.2"
+    "mongoose": "^8.19.2",
+    "multer": "^2.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
