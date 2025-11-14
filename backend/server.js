@@ -7,6 +7,7 @@ import authRoute from "./routes/authRoute.js";
 import departmentRoute from "./routes/departmentRoute.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import resultRoutes from "./routes/resultRoute.js";
+import sessionRoute from "./routes/sessionRoute.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/admin", departmentRoute);
 app.use("/api/results", resultRoutes);
 app.use("/api", courseRoutes);
+app.use("/api/sessions", sessionRoute);
 
 app.listen(port, () => {
   console.log("server connected");
