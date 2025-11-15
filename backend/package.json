@@ -9,7 +9,9 @@
     "seed:admin": "node seedAdmin.js",
     "seed:session": "node seedSessions.js",
     "seed:result": "node seedResults.js",
-    "seed:fullProject": "node seedFullProject.js"
+    "seed:fullProject": "node seedFullProject.js",
+    "seed:lecturer": "node seedLecturer.js",
+    "seed:students": "node seedStudents.js"
   },
   "keywords": [],
   "type": "module",
