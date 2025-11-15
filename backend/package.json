@@ -11,7 +11,10 @@
     "seed:result": "node seedResults.js",
     "seed:fullProject": "node seedFullProject.js",
     "seed:lecturer": "node seedLecturer.js",
-    "seed:students": "node seedStudents.js"
+    "seed:students": "node seedStudents.js",
+    "seed:seedCourses": "node seedCourses.js",
+    "seed:seedAll": "node seedAll.js",
+    "dropUserIndex": "node dropUserIndex.js"
   },
   "keywords": [],
   "type": "module",

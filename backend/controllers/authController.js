@@ -59,9 +59,9 @@ export const register = async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
-      department: populatedUser.department_id,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
+      matric_no: user.matric_no || null,
+      staff_id: user.staff_id || null,
+      department: populatedDept || null,
     };
 
     res.status(200).json({
@@ -97,8 +97,9 @@ export const login = async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
+      matric_no: user.matric_no || null,
+      staff_id: user.staff_id || null,
       department: populatedDept || null,
-      createdAt: user.createdAt,
     };
 
     res.status(200).json({
@@ -122,13 +123,37 @@ export const logout = async (req, res) => {
   }
 };
 
+// export const getMe = async (req, res) => {
+//   try {
+//     const user = await User.findById(req.user._id).select("-password");
+//     console.log(user);
+//     res.status(200).json(user);
+//   } catch (error) {
+//     console.log("Error in getMe controller", error.message);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
+// controllers/authController.js - me()
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select("-password");
-    console.log(user);
-    res.status(200).json(user);
-  } catch (error) {
-    console.log("Error in getMe controller", error.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    const user = await User.findById(req.user._id)
+      .select("-password")
+      .populate("department_id", "name description");
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const safeUser = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      matric_no: user.matric_no || null,
+      staff_id: user.staff_id || null,
+      department: user.department_id || null,
+    };
+    return res.json({ user: safeUser });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Server error" });
   }
 };
