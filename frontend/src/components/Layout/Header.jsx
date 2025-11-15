@@ -91,6 +91,15 @@ export default function Header() {
                 {user.role !== "student" && user.staff_id && (
                   <div className="text-xs text-gray-500">{user.staff_id}</div>
                 )}
+
+                {user.role === "student" && (
+                  <Link
+                    to="/student/results"
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    My Results
+                  </Link>
+                )}
               </div>
 
               <button

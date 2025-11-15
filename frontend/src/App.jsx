@@ -11,6 +11,7 @@ import Login from "./components/Auth/Login";
 // lazy load pages
 const CoursesList = lazy(() => import("./features/student/CoursesList"));
 const RegisterCourse = lazy(() => import("./features/student/RegisterCourse"));
+const StudentResults = lazy(() => import("./features/student/StudentResults"));
 const CreateDepartment = lazy(() =>
   import("./features/admin/CreateDepartment")
 );
@@ -67,11 +68,20 @@ export default function App() {
               }
             />
 
-            <Route
+            {/* <Route
               path="/profile"
               element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              }
+            /> */}
+
+            <Route
+              path="/student/results"
+              element={
+                <ProtectedRoute roles={["student"]}>
+                  <StudentResults />
                 </ProtectedRoute>
               }
             />
