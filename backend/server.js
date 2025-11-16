@@ -23,7 +23,10 @@ app.use(express.urlencoded({ extended: true })); // to parse form data(urlencode
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FRONTEND_ORIGIN || "http://localhost:5173",
+    origin:
+      process.env.FRONTEND_ORIGIN ||
+      "http://localhost:5173" ||
+      "https://uniportal-1-5c28.onrender.com",
     credentials: true,
   })
 );
