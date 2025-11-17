@@ -41,12 +41,12 @@ app.use(
 );
 
 // Routes
-app.use("/api/auth", authRoute);
-app.use("/api/admin", departmentRoute);
-app.use("/api/results", resultRoutes);
-app.use("/api", courseRoutes);
-app.use("/api/sessions", sessionRoute);
-app.use("/api/students", student);
+app.use("/auth", authRoute);
+app.use("/admin", departmentRoute);
+app.use("/results", resultRoutes);
+app.use("", courseRoutes);
+app.use("/sessions", sessionRoute);
+app.use("/students", student);
 
 app.listen(port, () => {
   console.log("server connected");
