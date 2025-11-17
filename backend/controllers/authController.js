@@ -12,8 +12,8 @@ const setToken = (res, userId) => {
   res.cookie("token", token, {
     httpOnly: true,
     maxAge: 15 * 60 * 1000, // 15 minutes in ms
-    sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+    secure: true,
   });
 
   return token;
